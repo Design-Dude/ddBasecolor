@@ -110,3 +110,36 @@ var my_second_basecolor = my_basecolor.clone().lighten(0.1);
 var my_basecolor = new ddBasecolor();
 var my_second_basecolor = my_basecolor.lighten(0.1);
 ```
+
+## Adjustment methods
+
+## Return methods
+These methods return actual color information for use in html and stylesheets:
+```
+var my_basecolor = my_basecolor('red');
+my_basecolor.hex(); // #FF0000;
+my_basecolor.hexa(); // #FF0000FF;
+my_basecolor.rgb(); // rgb(255,0,0);
+my_basecolor.rgba(); // rgba(255,0,0,1);
+my_basecolor.hsl(); // hsl(0,100%,50%);
+my_basecolor.hsla(); // hsl(0,100%,50%,1);
+```
+If you need the color information in number format you can read out each property individually..
+```
+var my_basecolor = my_basecolor('red');
+my_basecolor.alpha(); // alpha
+my_basecolor.hue(); // hue
+my_basecolor.saturation(); // saturation
+my_basecolor.lightness(); // lightness
+```
+...or combined as an object, with the keyword 'object' or short 'obj'. These objects include the alpha channel.
+```
+var my_basecolor = my_basecolor('red');
+my_basecolor.rgb('obj'); // {r:255,g:0,b:0,a:1}
+my_basecolor.hsl('obj'); // {h:0,s:100,l:50,a:1}
+```
+With cmyk enabled:
+```
+var my_basecolor = new ddBasecolor('blue', true);
+console.log(my_basecolor.cmyk()); // {c:0,m:100,y:100,k:0}
+```
