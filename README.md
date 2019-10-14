@@ -13,6 +13,7 @@ Download ```ddBasecolor.js``` or ```ddBasecolor.min.js``` and simply include the
 
 ## Constructor
 ```var my_color = new ddBasecolor(color, ymck = false);```
+
 Call ddBasecolor by passing any valid web color specification or the ddBasecolor specific cmyk option. The following examples all create a red color object, with or without alpha channel.
 ```
 var my_red = new ddBasecolor('red');
@@ -32,7 +33,7 @@ Without color specification the new ddBasecolor will be black opaque or black tr
 var my_basecolor = new ddBasecolor();
 var my_basecolor = new ddBasecolor('transparent');
 ```
-Finally colors can be created using these methods passing values instead of strings, with or without alpha channels. Without alpha channel the new ddBasecolor will be fully opaque.
+Colors can also be created using below methods passing number values instead of strings, with or without alpha channels. Without alpha channel the new ddBasecolor will be fully opaque.
 ```
 var my_basecolor = new ddBasecolor();
 var my_red = my_basecolor.hex('#ff0000');
@@ -57,7 +58,7 @@ var my_basecolor = new ddBasecolor('#f00'); // no cmyk properties
 my_basecolor = my_basecolor.cmyk(0, 100, 100, 0)); // cmyk properties are now available
 ```
 
-##Basic usage
+## Basic usage
 It is important to know that the basecolor will never change once created unless you do so yourself. Methods all have a return value with the newly changed color information. In the first example below, the variable my_basecolor is still blue whereas my_red is a clone, changed to red. In the second example my_basecolor changes from blue to red because it is assigned its own return value.
 ```
 var my_basecolor = new ddBasecolor('blue');
@@ -76,13 +77,13 @@ var my_highlight = my_basecolor.rgb(255, 0, 0, 0.5).lighten(0.5);
 
 ## Properties
 The following properties will be available after construction.
-###General
+### General
 ```
 var my_basecolor = new ddBasecolor();
 my_basecolor.version; // version
 my_basecolor.info; // meta information
 ```
-###color data
+### color data
 ```
 my_basecolor.r; // red
 my_basecolor.g; // green
@@ -92,7 +93,7 @@ my_basecolor.h; // hue
 my_basecolor.s; // saturation
 my_basecolor.l; // lightness
 ```
-With cmyk enabled:
+### With cmyk enabled:
 ```
 my_basecolor.c; // cyan
 my_basecolor.m; // magenta
@@ -100,7 +101,7 @@ my_basecolor.y; // yellow
 my_basecolor.k; // black
 ```
 
-##Cloning
+## Cloning
 Since every method return a clone for further use, cloning a color is not ver useful. It is possible however. Both examples below do the same thing.
 ```
 var my_basecolor = new ddBasecolor();
