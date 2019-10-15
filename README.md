@@ -12,7 +12,7 @@ Download ```ddBasecolor.js``` or ```ddBasecolor.min.js``` and simply include the
 
 ## Constructor
 ```var my_color = new ddBasecolor(color, ymck = false);```
-Call ```ddBasecolor``` and provide any valid web ***color*** specification. The following examples all create a red color object, with or without alpha channel.
+Call ```ddBasecolor``` and provide any valid web *color* specification. The following examples all create a red color object, with or without alpha channel.
 ```
 var my_red = new ddBasecolor('red');
 var my_red = new ddBasecolor('#f00');
@@ -20,7 +20,7 @@ var my_red = new ddBasecolor('#ff0000');
 var my_red = new ddBasecolor('rgb(255, 0, 0)');
 var my_red = new ddBasecolor('hsl(0, 100%, 50%)');
 var my_red = new ddBasecolor('cmyk(0, 100, 100, 0)');
-// with transparency
+// with transparency (most browsers accept the above statements with extra alpha channel provided)
 var my_red = new ddBasecolor('#f008');
 var my_red = new ddBasecolor('#FF000080');
 var my_red = new ddBasecolor('rgba(255, 0, 0, 0.5)');
