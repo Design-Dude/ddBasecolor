@@ -12,7 +12,7 @@ Download ```ddBasecolor.js``` or ```ddBasecolor.min.js``` and simply include the
 
 ## Constructor
 ```var my_color = new ddBasecolor(color, ymck = false);```
-Call ```ddBasecolor``` and provide any valid web *color* specification. The following examples all create a red color object, with or without alpha channel.
+Call ```ddBasecolor``` and provide any valid web color specification. The following examples all create a red color object, with and without alpha channel.
 ```
 var my_red = new ddBasecolor('red');
 var my_red = new ddBasecolor('#f00');
@@ -27,12 +27,12 @@ var my_red = new ddBasecolor('rgba(255, 0, 0, 0.5)');
 var my_red = new ddBasecolor('hsla(0, 100%, 50%, 0.5)');
 var my_red = new ddBasecolor('cmyka(0, 100, 100, 0, 0.5)');
 ```
-Without color specification the new ```ddBasecolor``` will be black opaque or black transparent if the ***transparent*** keyword is used.
+Without color specification the new ```ddBasecolor``` will be black opaque or black transparent if the _transparent_ keyword is used.
 ```
 var my_basecolor = new ddBasecolor();
 var my_basecolor = new ddBasecolor('transparent');
 ```
-Colors can also be created using these creation methods. Pass the appropriate comma seperated values with or without alpha channel. 
+Colors can also be created using these ```creation methods.``` Pass the appropriate comma seperated values with or without alpha channel. 
 ```
 var my_basecolor = new ddBasecolor();
 var my_red = my_basecolor.hex('#ff0000');
@@ -42,7 +42,7 @@ var my_red = my_basecolor.cmyk(0, 100, 100, 0, 0.5); // half transparent
 ```
 
 ## CMYK
-By default ```ddBasecolor``` does not calculate ***cmyk*** values to prevent unnecessary overhead. To activate ***cmyk*** calculations set the second ***cmyk*** option to __true__. A few axamples:
+By default ```ddBasecolor``` does not calculate cmyk values to prevent unnecessary overhead. To activate cmyk calculations set the second cmyk option to _true_. A few axamples:
 ```
 var my_red = new ddBasecolor('#f00', true);
 var my_red = new ddBasecolor('rgb(255, 0, 0)', true);
@@ -57,7 +57,7 @@ var my_basecolor = new ddBasecolor('#f00'); // no cmyk properties
 my_basecolor = my_basecolor.cmyk(0, 100, 100, 0)); // cmyk properties are now available
 ```
 
-## Basic usage
+## Notice
 It is important to know that the basecolor will never change once created unless you do so yourself. Methods all have a return value with the newly changed color information. In the first example below, the variable my_basecolor is still blue whereas my_red is a clone, changed to red. In the second example my_basecolor changes from blue to red because it is assigned its own return value.
 ```
 var my_basecolor = new ddBasecolor('blue');
@@ -76,13 +76,13 @@ var my_highlight = my_basecolor.rgb(255, 0, 0, 0.5).lighten(0.5);
 
 ## Properties
 The following properties will be available after construction.
-### General
+### General properties
 ```
 var my_basecolor = new ddBasecolor();
 my_basecolor.version; // version
 my_basecolor.info; // meta information
 ```
-### color data
+### Color properties
 ```
 my_basecolor.r; // red
 my_basecolor.g; // green
@@ -92,7 +92,7 @@ my_basecolor.h; // hue
 my_basecolor.s; // saturation
 my_basecolor.l; // lightness
 ```
-### With cmyk enabled:
+### Cmyk properties:
 ```
 my_basecolor.c; // cyan
 my_basecolor.m; // magenta
@@ -101,7 +101,8 @@ my_basecolor.k; // black
 ```
 
 ## Cloning
-Since every method return a clone for further use, cloning a color is not ver useful. It is possible however. Both examples below do the same thing.
+Since every method return a clone for further use, cloning a color is not ver useful. It is possible however.
+Both examples below do the same thing.
 ```
 var my_basecolor = new ddBasecolor();
 var my_second_basecolor = my_basecolor.clone().lighten(0.1);
@@ -110,10 +111,14 @@ var my_basecolor = new ddBasecolor();
 var my_second_basecolor = my_basecolor.lighten(0.1);
 ```
 
-## Adjustment methods
+## Methods
 
-## Return methods
-These methods return actual color information for use in html and stylesheets:
+### Standard methods
+
+### Smart methods
+
+### Return methods
+These methods return color information for use in html or stylesheets:
 ```
 var my_basecolor = my_basecolor('red');
 my_basecolor.hex(); // #FF0000;
@@ -123,7 +128,7 @@ my_basecolor.rgba(); // rgba(255,0,0,1);
 my_basecolor.hsl(); // hsl(0,100%,50%);
 my_basecolor.hsla(); // hsl(0,100%,50%,1);
 ```
-If you need the color information in number format you can read out each property individually..
+If you need the color information in number format you can read out each property individually.
 ```
 var my_basecolor = my_basecolor('red');
 my_basecolor.alpha(); // alpha
@@ -131,14 +136,10 @@ my_basecolor.hue(); // hue
 my_basecolor.saturation(); // saturation
 my_basecolor.lightness(); // lightness
 ```
-...or combined as an object, with the keyword 'object' or short 'obj'. These objects include the alpha channel.
+Rgb, hsl and cmyk data may also be retured as data objects. The keyword _obj_ is compulsory for rgb and hsl. Both rgb and hsl include the alpha channel.
 ```
 var my_basecolor = my_basecolor('red');
 my_basecolor.rgb('obj'); // {r:255,g:0,b:0,a:1}
-my_basecolor.hsl('obj'); // {h:0,s:100,l:50,a:1}
-```
-With cmyk enabled:
-```
-var my_basecolor = new ddBasecolor('blue', true);
+my_basecolor.hsl('object'); // {h:0,s:100,l:50,a:1}
 console.log(my_basecolor.cmyk()); // {c:0,m:100,y:100,k:0}
 ```
