@@ -1,5 +1,5 @@
 # Basecolor
-Small and simple javascript library for manipulating color objects. The class Includes gradients, cmyk and text contrast options.
+Small and simple javascript library for manipulating color objects. The class Includes smart gradient, cmyk and text contrast options.
 
 ## Dependencies
 None.
@@ -8,32 +8,31 @@ None.
 Download ```ddBasecolor.js``` or ```ddBasecolor.min.js``` and simply include the file in your project.
 ```
 <script type='text/javascript' src='ddBasecolor.js'></script>
-<script type='text/javascript' src='ddBasecolor.min.js'></script>
 ```
 
 ## Constructor
 ```var my_color = new ddBasecolor(color, ymck = false);```
-
-Call ddBasecolor by passing any valid web color specification or the ddBasecolor specific cmyk option. The following examples all create a red color object, with or without alpha channel.
+Call ```ddBasecolor``` and provide any valid web ***color*** specification. The following examples all create a red color object, with or without alpha channel.
 ```
 var my_red = new ddBasecolor('red');
 var my_red = new ddBasecolor('#f00');
-var my_red = new ddBasecolor('#f008'); // half transparent
 var my_red = new ddBasecolor('#ff0000');
-var my_red = new ddBasecolor('#FF000080'); // half transparent
 var my_red = new ddBasecolor('rgb(255, 0, 0)');
-var my_red = new ddBasecolor('rgba(255, 0, 0, 0.5)'); // half transparent
 var my_red = new ddBasecolor('hsl(0, 100%, 50%)');
-var my_red = new ddBasecolor('hsla(0, 100%, 50%, 0.5)'); // half transparent
 var my_red = new ddBasecolor('cmyk(0, 100, 100, 0)');
-var my_red = new ddBasecolor('cmyka(0, 100, 100, 0, 0.5)'); // half transparent
+// with transparency
+var my_red = new ddBasecolor('#f008');
+var my_red = new ddBasecolor('#FF000080');
+var my_red = new ddBasecolor('rgba(255, 0, 0, 0.5)');
+var my_red = new ddBasecolor('hsla(0, 100%, 50%, 0.5)');
+var my_red = new ddBasecolor('cmyka(0, 100, 100, 0, 0.5)');
 ```
-Without color specification the new ddBasecolor will be black opaque or black transparent if the transparent keyword is used.
+Without color specification the new ```ddBasecolor``` will be black opaque or black transparent if the ***transparent*** keyword is used.
 ```
 var my_basecolor = new ddBasecolor();
 var my_basecolor = new ddBasecolor('transparent');
 ```
-Colors can also be created using below methods passing number values instead of strings, with or without alpha channels. Without alpha channel the new ddBasecolor will be fully opaque.
+Colors can also be created using these creation methods. Pass the appropriate comma seperated values with or without alpha channel. 
 ```
 var my_basecolor = new ddBasecolor();
 var my_red = my_basecolor.hex('#ff0000');
@@ -43,7 +42,7 @@ var my_red = my_basecolor.cmyk(0, 100, 100, 0, 0.5); // half transparent
 ```
 
 ## CMYK
-The constant calculation of cmyk values means unnecessary overhead in most cases. By default ddBasecolor does not do that. To activate cmyk calculations include the second cmyk boolean during creation or use the ddBasecolor specific cmyk option. A few axamples:
+By default ```ddBasecolor``` does not calculate ***cmyk*** values to prevent unnecessary overhead. To activate ***cmyk*** calculations set the second ***cmyk*** option to __true__. A few axamples:
 ```
 var my_red = new ddBasecolor('#f00', true);
 var my_red = new ddBasecolor('rgb(255, 0, 0)', true);
