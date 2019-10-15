@@ -114,8 +114,10 @@ var my_second_basecolor = my_basecolor.lighten(0.1);
 ## Methods
 
 ### Standard methods
+You can update alpha, hue, lightness and saturation values with the standard methods.
 
 ### Smart methods
+The smart methods let you do some magic things. The methods make ddBasecolor a class apart.
 
 ### Return methods
 These methods return color information for use in html or stylesheets:
@@ -143,3 +145,5 @@ my_basecolor.rgb('obj'); // {r:255,g:0,b:0,a:1}
 my_basecolor.hsl('object'); // {h:0,s:100,l:50,a:1}
 console.log(my_basecolor.cmyk()); // {c:0,m:100,y:100,k:0}
 ```
+
+## Itterations
