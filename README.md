@@ -47,7 +47,7 @@ var my_red = my_basecolor.cmyk(0, 100, 100, 0, 0.5); // half transparent
 ```
 
 ## CMYK
-By default ```ddBasecolor``` does not calculate cmyk values to prevent unnecessary overhead. To activate cmyk calculations set the second cmyk option to _true_. A few axamples:
+By default ```ddBasecolor``` does not calculate cmyk values to prevent unnecessary overhead. To activate cmyk calculations set the second cmyk option to _true_. A few examples:
 ```
 var my_red = new ddBasecolor('#f00', true);
 var my_red = new ddBasecolor('rgb(255, 0, 0)', true);
