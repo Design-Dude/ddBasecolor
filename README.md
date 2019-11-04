@@ -118,6 +118,7 @@ alpha(0.5); // set alpha level to half transparent
 
 #### cmyk(c,m,y,k,a=1)
 Set the color to _c,m,y_ and _k_ values between 0 and 100.
+
 The _a_ value must be between 0 and 1. 1 is default.
 ```
 cmyk(); // get cmyk object {c:0,m:100,y:100,k:0} if cmyk is enabled
@@ -142,8 +143,11 @@ hexa('#ff000080'); // set color with alpha channel from hexadecimal string
 
 #### hsl(h,s,l,a=1)
 _h_ is the hue value between 0 and 360 degrees.
+
 _s_ is the saturation value between 0 (grey) and 100 (fully saturated).
+
 _l_ is the lightness value between 0 (black) and 100 (white). 50 is (full color).
+
 _a_ is an opacity value between 0 and 1. 1 is default and fully opaque.
 ```
 hsl(); // get hsl string 'hsl(0,100%,50%)'
@@ -153,8 +157,11 @@ hsl(0,100,50,0.5); // set hsl values and optional opacity to half transparent
 
 #### hsla(h,s,l,a=1)
 _h_ is the hue value between 0 and 360 degrees.
+
 _s_ is the saturation value between 0 (grey) and 100 (fully saturated).
+
 _l_ is the lightness value between 0 (black) and 100 (white). 50 is (full color).
+
 _a_ is an opacity value between 0 and 1. 1 is default and fully opaque.
 ```
 hsla(); // get hsla string 'hsl(0,100%,50%,0.5)'
@@ -178,6 +185,7 @@ lightness(l); // set lightness value to 1, which is white.
 
 #### rgb(r,g,b,a=1)
 _r, g, b_ values are between 0 and 255
+
 _a_ is an opacity value between 0 and 1. 1 is default and fully opaque.
 ```
 rgb(); // get rgb string 'rgb(255,0,0)'
@@ -187,6 +195,7 @@ rgb(255,0,0); // set color to red, fully opaque (default 1)
 
 #### rgba(r,g,b,a=1)
 _r, g, b_ values are between 0 and 255
+
 _a_ is an opacity value between 0 and 1. 1 is default and fully opaque.
 ```
 rgba(); // get rgb string 'rgb(255,0,0,0.5)'
@@ -203,6 +212,7 @@ saturation(100); // set saturation value to fully saturated
 
 ### Setter only methods
 These setter only methods make it easier to alter specific properties in a single direction.
+
 [EXAMPLE]
 
 #### desaturate(s)
