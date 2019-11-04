@@ -151,6 +151,12 @@ hsla('obj'); // get hsl object with alpha channel {h:0,s:100,l:50,a=1}
 hsla(h,s,l,a=1); // set hsl values and optional alpha channel between 0 and 1
 ```
 
+#### hue(h)
+```
+hue(); // get hue value
+hue(h); // set hue value between 0 and 360 degrees
+```
+
 #### lightness(l)
 ```
 lightness(); // get lightness value
