@@ -5,11 +5,11 @@ Small and simple javascript library for manipulating color objects. With methods
 None.
 
 ## Installation
-Download the latest version ```ddBasecolor.1.2.0.js``` or ```ddBasecolor.1.2.0.min.js``` and simply include the file in your project.
+Download the latest version ```ddBasecolor.1.2.0.js``` or ```ddBasecolor.1.2.0.min.js``` and include the file in your project.
 ```
 <script type='text/javascript' src='ddBasecolor.1.2.0.min.js'></script>
 ```
-Or simply include the (always) latest version from design-dude.nl.
+Or link ddBasecolor from design-dude.nl. This will always be the latest version.
 ```
 <script type='text/javascript' src='https://www.design-dude.nl/classes/ddBasecolor.min.js'></script>
 ```
