@@ -59,7 +59,7 @@ var my_basecolor = new ddBasecolor('transparent', true);
 The cmyk properties will also be available if cmyk values are specified later on.
 ```
 var my_basecolor = new ddBasecolor('#f00'); // no cmyk properties
-my_basecolor = my_basecolor.cmyk(0, 100, 100, 0)); // cmyk properties are now available
+my_basecolor = my_basecolor.cmyk(0, 100, 100, 0); // cmyk properties are now available
 ```
 
 ## Properties
@@ -80,7 +80,7 @@ my_basecolor.h; // hue
 my_basecolor.s; // saturation
 my_basecolor.l; // lightness
 ```
-### Cmyk properties:
+### CMYK properties:
 ```
 my_basecolor.c; // cyan
 my_basecolor.m; // magenta
@@ -89,16 +89,97 @@ my_basecolor.k; // black
 ```
 
 ## Basic usage
-The basic use consists of 3 steps simple steps
-1. make a color using the constructor. See above.
-2. change the color using various setter, standard or smart methods
-3. use getter methods to obtain usable color formats for further use in your scripts.
+The basic use consists of 3 steps simple steps:
+1. Create a _ddBasecolor_ using the constructor. See the _consturctors_ above or _setter methods_ below. It's important to notice that the basecolor you create will never change because the color updates and loops from the next step depend on this basecolor. If you need to change the basecolor, use _clone()_ or simply create a new _ddBasecolor_.
+1. Next update your color using various _setter, standard or smart methods_. Create series of colors with simple for-loops, all from the same basecolor. See the _example_ below and _advanced techniques_ at the bottom.
+1. Finally use _getter methods_ to obtain usable color formats for further use in your scripts.
 
+### Basic example
+```
+var my_basecolor = new ddBasecolor('red'); // step 1, create a color
+for(i=0 ; i<=1 ; i+=0.1) { // make a loop to create 11 colors
+  var color_step = my_basecolor.lighten(i); // step 2, calculate color step
+  console.log(color_step.hex()); // step 3, do something with the color step
+}
+```
+[EXAMPLE]
 
 ## Methods
+### Getter and setter methods
+These methods get or set the various properties. Pass the correct attributes to set a property.
+
+#### alpha(level)
+```
+alpha(); // get alpha level
+alpha(level); // set alpha level between 0 and 1
+```
+
+#### cmyk(c,m,y,k,a=1)
+```
+cmyk(); // get cmyk object {c:0,m:100,y:100,k:0} if cmyk is enabled
+cmyk(c,m,y,k,a=1); // set cmyk values between 0 and 100 and optional alpha channel between 0 and 1
+```
+
+#### hex(h)
+```
+hex(); // get hexadecimal string '#ff0000'
+hex('#ff0000'); // set color from hexadecimal string (alpha channel will be 1)
+hex('#ff000080'); // set color with alpha channel from hexadecimal string
+```
+
+#### hexa(h)
+```
+hexa(); // get hexadecimal string with alpha channel '#ff000080'
+hexa('#ff0000'); // set color from hexadecimal string (alpha channel will be 1)
+hexa('#ff000080'); // set color with alpha channel from hexadecimal string
+```
+
+#### hsl(h,s,l,a=1)
+_h_ stands for hue with values between 0 and 360 degrees.
+_s_ stands for saturation with values between 0 (grey) and 100 (fully saturated)
+_l_ stands for lightness with values between 0 (black), 50 (full color) and 100 (white)
+```
+hsl(); // get hsl string 'hsl(0,100%,50%)'
+hsl('obj'); // get hsl object with alpha channel {h:0,s:100,l:50,a=1}
+hsl(h,s,l,a=1); // set hsl values and optional alpha channel between 0 and 1
+```
+
+#### hsla(h,s,l,a=1)
+```
+hsla(); // get hsla string 'hsl(0,100%,50%,0.5)'
+hsla('obj'); // get hsl object with alpha channel {h:0,s:100,l:50,a=1}
+hsla(h,s,l,a=1); // set hsl values and optional alpha channel between 0 and 1
+```
+
+#### lightness(l)
+```
+lightness(); // get lightness value
+lightness(l); // set lightness value between 0 (black), 50 (full color) and 100 (white)
+```
+
+#### rgb(r,g,b,a=1)
+```
+rgb(); // get rgb string 'rgb(255,0,0)'
+rgb('obj'); // get rgb object with alpha channel {r:255,g:0,b:0,a=1}
+rgb(r,g,b,a=1); // set rgb values between 0 and 255 and optional alpha channel between 0 and 1
+```
+
+#### rgba(r,g,b,a=1)
+```
+rgba(); // get rgb string 'rgb(255,0,0,0.5)'
+rgba('obj'); // get rgb object with alpha channel {r:255,g:0,b:0,a=1}
+rgba(r,g,b,a=1); // set rgb values between 0 and 255 and optional alpha channel between 0 and 1
+```
+
+#### saturation(s)
+```
+saturation(); // get saturation value
+saturation(s); // set saturation value between 0 (grey) and 100 (fully saturated)
+```
+
 
 ### Standard methods
-You can update alpha, hue, lightness and saturation values with the standard methods.
+Unlike setter methods these methods update a single property
 
 ### Smart methods
 The smart methods let you do some magic things. The methods make ddBasecolor a class apart.
@@ -130,4 +211,4 @@ my_basecolor.hsl('object'); // {h:0,s:100,l:50,a:1}
 console.log(my_basecolor.cmyk()); // {c:0,m:100,y:100,k:0}
 ```
 
-## Itterations
+## Advanced techniques
