@@ -89,10 +89,10 @@ my_basecolor.k; // black
 ```
 
 ## Basic usage
-The basic use consists of 3 steps simple steps:
-1. Create a _ddBasecolor_ using the constructor. See the _consturctors_ above or _setter methods_ below. It's important to notice that the basecolor you create will never change because the color updates and loops from the next step depend on this basecolor. If you need to change the basecolor, use _clone()_ or simply create a new _ddBasecolor_.
-1. Next update your color using various _setter, standard or smart methods_. Create series of colors with simple for-loops, all from the same basecolor. See the _example_ below and _advanced techniques_ at the bottom.
-1. Finally use _getter methods_ to obtain usable color formats for further use in your scripts.
+The basic use consists of 3 simple steps:
+1. Create a _ddBasecolor_ using the constructor. See the _consturctors_ above or _setter methods_ below. It's important to notice that the basecolor you create will never change because the color updates and loops from the next step depend on this basecolor. If you need to change the basecolor, use _clone()_ or create a new _ddBasecolor_.
+1. Next, update your color variable using various _setter- and smart methods_. Create series of colors with simple for-loops, all from the same basecolor. See the _examples_ below and _advanced techniques_ at the bottom.
+1. Finally use _getter methods_ to obtain usable color formats for further use in your scriptsor html.
 
 ### Basic example
 ```
@@ -106,7 +106,7 @@ for(i=0 ; i<=1 ; i+=0.1) { // make a loop to create 11 colors
 
 ## Methods
 ### Getter and setter methods
-These methods get or set the various properties. Pass the correct attributes to set a property.
+These methods get or set the various properties. Pass the correct attributes to set a property. Setting a single property returns a copied ddBasecolor object with updated color properties. For example, if the rgb values are changed, the hsl values wil also be updated. The basecolor however will never change. Both the initial and the returned color object will share this unaltered basecolor.
 
 #### alpha(level)
 ```
@@ -184,8 +184,8 @@ saturation(s); // set saturation value between 0 (grey) and 100 (fully saturated
 ```
 
 
-### Standard methods
-Unlike setter methods these methods update a single property
+### Setter only methods
+These methods do not have a return value. 
 
 ### Smart methods
 The smart methods let you do some magic things. The methods make ddBasecolor a class apart.
