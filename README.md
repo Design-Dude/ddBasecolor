@@ -1,6 +1,38 @@
 # Basecolor
 Small and simple javascript library for manipulating color objects. With methods for (rainbow) gradients, cmyk and text contrast. Optimized for the human eye.
 
+## The story
+No doubt, there are many great color libraries. Unfortunately not any of them met my needs. I had to fill a chart with a rainbow coloured pattern but many colours looked alike doing so pure mathematically. I wanted individually distinguishable colours. That's what ddBasecolor tries to provide. If the human eye is more important than the math behind you should give ddBasecolor a try. Also, where smart methods are involved it's optional.
+	
+## Concept
+Compared to other libraries the concept is a little different also. Once a ```ddBasecolor``` is created its base color will never change again. Instead, each operation will return a copy with updated values. Multiple operations can be stacked together though, as you can see in the section _Advanced techniques_. The big advantage is that all operations are predictable because they are always calculated from the same base color.
+
+## Basic usage
+The basic use consists of 3 simple steps:
+1. Create a ```ddBasecolor``` using the constructor. See _Consturctor_ and _setter methods_ below. As mentioned above, it's important to notice that the base color you create will never change because the color updates and loops from the next step depend on this base color. If you need to change the basecolor, use ```clone()``` or create a new ```ddBasecolor```.
+```
+var my_color = new ddBasecolor('red');
+```
+2. Next, update your color variable using various _setter-_ and _smart methods_. Create series of colors with simple for-loops. See the _examples_ below and _Advanced techniques_ at the bottom. Many operations need the base color for their calculations which is why the basecolor never changes (just to say it again). Both the initial and the returned color object will share the unaltered basecolor which makes it possible to stack operations.
+```
+var my_new_color = my_color.lighten(0.5);
+```
+3. Finally use _getter methods_ and obtain the color data in a format for further use in your css, script or html.
+```
+my_new_color = my_new_color.hex();
+```
+## Series
+To make a series of colors you will needa loop.
+```
+var my_color = new ddBasecolor('red'); // step 1: create a colour 
+for(i=0 ; i<=1 ; i+=0.1) { // 10 steps, 11 colours
+  var step_color = my_color.lighten(i); // step 2: calculate colour step
+  var step_color_as_hex_string = step_color.hex(); // step 3: get the result...
+  ... // and do somthing with it
+}
+```
+See the basic usage example at Codepen [EXAMPLE]
+
 ## Dependencies
 None.
 
@@ -9,7 +41,7 @@ Download the latest version ```ddBasecolor.1.2.0.js``` or ```ddBasecolor.1.2.0.m
 ```
 <script type='text/javascript' src='ddBasecolor.1.2.0.min.js'></script>
 ```
-Or link ddBasecolor from design-dude.nl. This will always be the latest version.
+Or link ```ddBasecolor``` from design-dude.nl. This will always be the latest version.
 ```
 <script type='text/javascript' src='https://www.design-dude.nl/classes/ddBasecolor.min.js'></script>
 ```
@@ -88,29 +120,12 @@ my_basecolor.y; // yellow
 my_basecolor.k; // black
 ```
 
-## Basic usage
-The basic use consists of 3 simple steps:
-1. Create a _ddBasecolor_ using the constructor. See the _consturctors_ above or _setter methods_ below. It's important to notice that the basecolor you create will never change because the color updates and loops from the next step depend on this basecolor. If you need to change the basecolor, use _clone()_ or create a new _ddBasecolor_.
-1. Next, update your color variable using various _setter- and smart methods_. Create series of colors with simple for-loops. See the _examples_ below and _advanced techniques_ at the bottom. Many operations need the basecolor for their calculations which is why the basecolor never changes. Both the initial and the returned color object will share the unaltered basecolor. 
-1. Finally use _getter methods_ and obtain the color data in a format for further use in your css, scripts or html.
-
-### Basic example
-```
-var my_basecolor = new ddBasecolor('red'); // step 1, create a color
-for(i=0 ; i<=1 ; i+=0.1) { // make a loop to create 11 colors
-  var step_color = my_basecolor.lighten(i); // step 2, calculate color step
-  var step_color_hex_string = step_color.hex(); // step 3, get the result
-  ... // do somthing with the result
-}
-```
-[EXAMPLE]
-
 ## Methods
 ### Getter and setter methods
 These methods get or set the various properties of the color involved. All properties will be updated accordingly. Setting the hsl values for example will also update the rgb and cmyk values.
 
 #### alpha(a)
-_a_ is an opacity value between 0 and 1. 1 is fully opaque.
+_a_ is an opacity value between 0 and 1 where 1 is fully opaque.
 ```
 alpha(); // get alpha level
 alpha(0.5); // set alpha level to half transparent
@@ -119,14 +134,14 @@ alpha(0.5); // set alpha level to half transparent
 #### cmyk(c,m,y,k,a=1)
 Set the color to _c,m,y_ and _k_ values between 0 and 100.
 
-The _a_ value must be between 0 and 1. 1 is default.
+_a_ is an opacity value between 0 and 1 where 1 is default and fully opaque.
 ```
 cmyk(); // get cmyk object {c:0,m:100,y:100,k:0} if cmyk is enabled
 cmyk(0,100,100,0,0.5); // set color to red from cmyk values, half transparent.
 ```
 
 #### hex(h)
-_h_ is a hexadecimal string.
+_h_ is a hexadecimal string, with or without transparency information.
 ```
 hex(); // get color as a hexadecimal string '#ff0000'
 hex('#ff0000'); // set color from hexadecimal string (alpha channel will be 1)
@@ -134,7 +149,7 @@ hex('#ff000080'); // set color with alpha channel from hexadecimal string
 ```
 
 #### hexa(h)
-_h_ is a hexadecimal string.
+_h_ is a hexadecimal string, with or without transparency information.
 ```
 hexa(); // get hexadecimal string with alpha channel '#ff000080'
 hexa('#ff0000'); // set color from hexadecimal string (alpha channel will be 1)
@@ -146,9 +161,9 @@ _h_ is the hue value between 0 and 360 degrees.
 
 _s_ is the saturation value between 0 (grey) and 100 (fully saturated).
 
-_l_ is the lightness value between 0 (black) and 100 (white). 50 is (full color).
+_l_ is the lightness value between 0 (black) and 100 (white) where 50 is full color.
 
-_a_ is an opacity value between 0 and 1. 1 is default and fully opaque.
+_a_ is an opacity value between 0 and 1 where 1 is default and fully opaque.
 ```
 hsl(); // get hsl string 'hsl(0,100%,50%)'
 hsl('obj'); // get hsl object with alpha channel {h:0,s:100,l:50,a=1}
@@ -160,9 +175,9 @@ _h_ is the hue value between 0 and 360 degrees.
 
 _s_ is the saturation value between 0 (grey) and 100 (fully saturated).
 
-_l_ is the lightness value between 0 (black) and 100 (white). 50 is (full color).
+_l_ is the lightness value between 0 (black) and 100 (white) where 50 is full color.
 
-_a_ is an opacity value between 0 and 1. 1 is default and fully opaque.
+_a_ is an opacity value between 0 and 1 where 1 is default and fully opaque.
 ```
 hsla(); // get hsla string 'hsl(0,100%,50%,0.5)'
 hsla('obj'); // get hsl object with alpha channel {h:0,s:100,l:50,a=1}
@@ -177,7 +192,7 @@ hue(240); // set hue value to 120, which is blue.
 ```
 
 #### lightness(l)
-_l_ is the lightness value between 0 (black) and 100 (white). 50 is full color.
+_l_ is the lightness value between 0 (black) and 100 (white) where 50 is full color.
 ```
 lightness(); // get lightness value
 lightness(l); // set lightness value to 1, which is white.
@@ -186,7 +201,7 @@ lightness(l); // set lightness value to 1, which is white.
 #### rgb(r,g,b,a=1)
 _r, g, b_ values are between 0 and 255
 
-_a_ is an opacity value between 0 and 1. 1 is default and fully opaque.
+_a_ is an opacity value between 0 and 1 where 1 is default and fully opaque.
 ```
 rgb(); // get rgb string 'rgb(255,0,0)'
 rgb('obj'); // get rgb object with alpha channel {r:255,g:0,b:0,a=1}
@@ -196,7 +211,7 @@ rgb(255,0,0); // set color to red, fully opaque (default 1)
 #### rgba(r,g,b,a=1)
 _r, g, b_ values are between 0 and 255
 
-_a_ is an opacity value between 0 and 1. 1 is default and fully opaque.
+_a_ is an opacity value between 0 and 1 where 1 is default and fully opaque.
 ```
 rgba(); // get rgb string 'rgb(255,0,0,0.5)'
 rgba('obj'); // get rgb object with alpha channel {r:255,g:0,b:0,a=0.5}
@@ -210,18 +225,18 @@ saturation(); // get saturation value
 saturation(100); // set saturation value to fully saturated
 ```
 
-### Setter only methods
-These setter only methods make it easier to alter specific properties in a single direction.
+### Relative setter methods
+These setter methods make it easier to alter specific properties in a single direction relative to the current colour settings.
 
 [EXAMPLE]
 
 #### desaturate(s)
-_s_ is a desaturation value from 0 to 1, where 0 is the current level and 1 is fully desaturated.
+_s_ is a desaturation value from 0 to 1, where 0 is the current saturation value and 1 is fully desaturated.
 ```
 desaturate(1); // decrease the saturation level to fully desaturated
 ```
 #### opaque(a)
-_a_ is an opacity value from 0 to 1 where 0 is the current level and 1 is fully opaque.
+_a_ is an opacity value from 0 to 1 where 0 is the current opacity value and 1 is fully opaque.
 ```
 opaque(0.5); // decrease the opacity level to 50% of the current level
 ```
@@ -231,17 +246,17 @@ _h_ is the hue rotaion value in degrees where positive values rotate clockwise a
 rotate(-90); // rotate the current hue value 90 degrees counter clockwisde
 ```
 #### saturate(s)
-_s_ is a saturation value from 0 to 1, where 0 is the current level and 1 is fully saturated.
+_s_ is a saturation value from 0 to 1, where 0 is the current saturation value and 1 is fully saturated.
 ```
 saturate(0.5); // increase the saturation level by 50% to fully saturated
 ```
 #### transparent(a)
-_a_ is an opacity value from 0 to 1 where 0 is the current level and 1 is fully transparent.
+_a_ is an opacity value from 0 to 1 where 0 is the current opacity value and 1 is fully transparent.
 ```
 transparent(0.5); // increase the opacity level by 50% relative to the current level
 ```
 #### vivid(sl)
-_sl_ is a value from 0 to 1 where 0 is the current level and 1 is the same color, fully saturated without any darkness or lightness. This will be red, green or blue. By default, black, grey and white have a hue value of 0, which is equal to red when vividness is applied.
+_sl_ is a value from 0 to 1 where 0 is the current level and 1 is the same color, fully saturated without any darkness or lightness. By default, black, grey and white have a hue value of 0, which is equal to red when vividness is applied.
 ```
 vivid(1); // highlight the hue color relative to the current level
 ```
