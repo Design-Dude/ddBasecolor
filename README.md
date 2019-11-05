@@ -271,7 +271,7 @@ This method blends two colours into one.
 
 _color_ must be a ```ddBasecolor``` object.
 
-With _smart_ (default _true_) both colours are blended for the eye instead of mathematically. Smart blend take effect on darker and lighter areas.
+With _smart_ (default _true_) both colours are blended for the eye instead of mathematically. Smart blend takes effect on darker and lighter areas.
 ```
 var my_basecolor = new ddBasecolor('brown');
 var my_second_color = new ddBasecolor('brown');
