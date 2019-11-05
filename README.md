@@ -238,7 +238,7 @@ desaturate(1); // decrease the saturation level to fully desaturated
 #### opaque(a)
 _a_ is an opacity value from 0 to 1 where 0 is the current opacity value and 1 is fully opaque.
 ```
-opaque(0.5); // decrease the opacity level to 50% of the current level
+opaque(0.5); // increase the opacity level by 50%, halfway the current opacity value and fully opaque
 ```
 #### rotate(h)
 _h_ is the hue rotaion value in degrees where positive values rotate clockwise and negative values counter clockwise.
@@ -248,24 +248,24 @@ rotate(-90); // rotate the current hue value 90 degrees counter clockwisde
 #### saturate(s)
 _s_ is a saturation value from 0 to 1, where 0 is the current saturation value and 1 is fully saturated.
 ```
-saturate(0.5); // increase the saturation level by 50% to fully saturated
+saturate(0.5); // increase the saturation level by 50%, halfway the current saturation value and fully saturated
 ```
 #### transparent(a)
 _a_ is an opacity value from 0 to 1 where 0 is the current opacity value and 1 is fully transparent.
 ```
-transparent(0.5); // increase the opacity level by 50% relative to the current level
+transparent(0.5); // decrease the opacity level by 50%, halfway the current opacity value and fully transparent
 ```
 #### vivid(sl)
 _sl_ is a value from 0 to 1 where 0 is the current level and 1 is the same color, fully saturated without any darkness or lightness. By default, black, grey and white have a hue value of 0, which is equal to red when vividness is applied.
 ```
-vivid(1); // highlight the hue color relative to the current level
+vivid(1); // fully expose the hue color relative to the current saturation and lightness values
 ```
 
 ### Smart methods
-The smart methods let you do some magic things. The methods make ddBasecolor a class apart.
+The smart methods do some magic tricks and make ```ddBasecolor``` a class apart.
 
 #### blend(color, smart=true)
-This method blends two colors. 
+This method blends two colors into one. 
 
 ### Return methods
 These methods return color information for use in html or stylesheets:
