@@ -1,28 +1,28 @@
 # Basecolor
-Small and simple javascript library for manipulating color objects. With methods for (rainbow) gradients, cmyk and text contrast. Optimized for the human eye.
+Small and simple javascript library for manipulating colour objects. With methods for (rainbow) gradients, cmyk and text contrast. Optimized for the human eye.
 
 ## The story
-No doubt, there are many great color libraries. Unfortunately not any of them met my needs. I had to fill a chart with a rainbow coloured pattern but many colours looked alike doing so pure mathematically. I wanted individually distinguishable colours. That's what ddBasecolor tries to provide. If the human eye is more important than the math behind you should give ddBasecolor a try. Also, where smart methods are involved it's optional.
+No doubt, there are many great colour libraries. Unfortunately not any of them met my needs. I had to fill a chart with a rainbow coloured pattern but many colours looked alike doing so pure mathematically. I wanted individually distinguishable colours. That's what ddBasecolor tries to provide. If the human eye is more important than the math behind you should give ddBasecolor a try. Also, where smart methods are involved it's optional.
 	
 ## Concept
-Compared to other libraries the concept is a little different also. Once a ```ddBasecolor``` is created its base color will never change again. Instead, each operation will return a copy with updated values. Multiple operations can be stacked together though, as you can see in the section _Advanced techniques_. The big advantage is that all operations are predictable because they are always calculated from the same base color.
+Compared to other libraries the concept is a little different also. Once a ```ddBasecolor``` is created its base colour will never change again. Instead, each operation will return a copy with updated values. Multiple operations can be stacked together though, as you can see in the section _Advanced techniques_. The big advantage is that all operations are predictable because they are always calculated from the same base colour.
 
 ## Basic usage
 The basic use consists of 3 simple steps:
-1. Create a ```ddBasecolor``` using the constructor. See _Consturctor_ and _setter methods_ below. As mentioned above, it's important to notice that the base color you create will never change because the color updates and loops from the next step depend on this base color. If you need to change the basecolor, use ```clone()``` or create a new ```ddBasecolor```.
+1. Create a ```ddBasecolor``` using the constructor. See _Consturctor_ and _setter methods_ below. As mentioned above, it's important to notice that the base colour you create will never change because the colour updates and loops from the next step depend on this base colour. If you need to change the base colour, use ```clone()``` or create a new ```ddBasecolor```.
 ```
 var my_color = new ddBasecolor('red');
 ```
-2. Next, update your color variable using various _setter-_ and _smart methods_. Create series of colors with simple for-loops. See the _examples_ below and _Advanced techniques_ at the bottom. Many operations need the base color for their calculations which is why the basecolor never changes (just to say it again). Both the initial and the returned color object will share the unaltered basecolor which makes it possible to stack operations.
+2. Next, update your colour variable using various _setter-_ and _smart methods_. Create series of colours with simple for-loops. See the _examples_ below and _Advanced techniques_ at the bottom. Many operations need the base colour for their calculations which is why the base colour never changes (just to say it again). Both the initial and the returned colour object will share the unaltered base colour which makes it possible to stack operations.
 ```
 var my_new_color = my_color.lighten(0.5);
 ```
-3. Finally use _getter methods_ and obtain the color data in a format for further use in your css, script or html.
+3. Finally use _getter methods_ and obtain the colour data in a format for further use in your css, script or html.
 ```
 my_new_color = my_new_color.hex();
 ```
 ## Series
-To make a series of colors you will needa loop.
+To make a series of colours you will needa loop.
 ```
 var my_color = new ddBasecolor('red'); // step 1: create a colour 
 for(i=0 ; i<=1 ; i+=0.1) { // 10 steps, 11 colours
@@ -31,7 +31,7 @@ for(i=0 ; i<=1 ; i+=0.1) { // 10 steps, 11 colours
   ... // and do somthing with it
 }
 ```
-See the basic usage example at Codepen [EXAMPLE]
+See the [basic usage example at Codepen.io](https://codepen.io/design-dude/pen/ExxQgeR)
 
 ## Dependencies
 None.
@@ -48,7 +48,7 @@ Or link ```ddBasecolor``` from design-dude.nl. This will always be the latest ve
 
 ## Constructor
 ```var my_color = new ddBasecolor(color, ymck=false);```
-Call ```ddBasecolor``` and provide any valid web color specification. The following examples all create a red color object, some with alpha channel.
+Call ```ddBasecolor``` and provide any valid web colour specification. The following examples all create a red colour object, some with alpha channel.
 ```
 var my_red = new ddBasecolor('red');
 var my_red = new ddBasecolor('#f00');
@@ -63,12 +63,12 @@ var my_red = new ddBasecolor('rgba(255, 0, 0, 0.5)');
 var my_red = new ddBasecolor('hsla(0, 100%, 50%, 0.5)');
 var my_red = new ddBasecolor('cmyk(0, 100, 100, 0, 0.5)');
 ```
-Without color specification the new ```ddBasecolor``` will be black opaque or black transparent if the _transparent_ keyword is used.
+Without colour specification the new ```ddBasecolor``` will be black opaque or black transparent if the _transparent_ keyword is used.
 ```
 var my_basecolor = new ddBasecolor();
 var my_basecolor = new ddBasecolor('transparent');
 ```
-Colors can also be created using these ```setter methods.``` Pass the appropriate comma seperated values with or without alpha channel. 
+Colours can also be created using these ```setter methods.``` Pass the appropriate comma seperated values with or without alpha channel. 
 ```
 var my_basecolor = new ddBasecolor();
 var my_red = my_basecolor.hex('#ff0000');
@@ -102,7 +102,7 @@ var my_basecolor = new ddBasecolor();
 my_basecolor.version; // version
 my_basecolor.info; // meta information
 ```
-### Color properties
+### Colour properties
 ```
 my_basecolor.r; // red
 my_basecolor.g; // green
@@ -122,7 +122,7 @@ my_basecolor.k; // black
 
 ## Methods
 ### Getter and setter methods
-These methods get or set the various properties of the color involved. All properties will be updated accordingly. Setting the hsl values for example will also update the rgb and cmyk values.
+These methods get or set the various properties of the colour involved. All properties will be updated accordingly. Setting the hsl values for example will also update the rgb and cmyk values.
 
 #### alpha(a)
 _a_ is an opacity value between 0 and 1 where 1 is fully opaque.
@@ -132,7 +132,7 @@ alpha(0.5); // set alpha level to half transparent
 ```
 
 #### cmyk(c,m,y,k,a=1)
-Set the color to _c,m,y_ and _k_ values between 0 and 100.
+Set the colour to _c,m,y_ and _k_ values between 0 and 100.
 
 _a_ is an opacity value between 0 and 1 where 1 is default and fully opaque.
 ```
@@ -161,7 +161,7 @@ _h_ is the hue value between 0 and 360 degrees.
 
 _s_ is the saturation value between 0 (grey) and 100 (fully saturated).
 
-_l_ is the lightness value between 0 (black) and 100 (white) where 50 is full color.
+_l_ is the lightness value between 0 (black) and 100 (white) where 50 is full colour.
 
 _a_ is an opacity value between 0 and 1 where 1 is default and fully opaque.
 ```
@@ -175,7 +175,7 @@ _h_ is the hue value between 0 and 360 degrees.
 
 _s_ is the saturation value between 0 (grey) and 100 (fully saturated).
 
-_l_ is the lightness value between 0 (black) and 100 (white) where 50 is full color.
+_l_ is the lightness value between 0 (black) and 100 (white) where 50 is full colour.
 
 _a_ is an opacity value between 0 and 1 where 1 is default and fully opaque.
 ```
@@ -192,7 +192,7 @@ hue(240); // set hue value to 120, which is blue.
 ```
 
 #### lightness(l)
-_l_ is the lightness value between 0 (black) and 100 (white) where 50 is full color.
+_l_ is the lightness value between 0 (black) and 100 (white) where 50 is full colour.
 ```
 lightness(); // get lightness value
 lightness(l); // set lightness value to 1, which is white.
@@ -256,7 +256,7 @@ _a_ is an opacity value from 0 to 1 where 0 is the current opacity value and 1 i
 transparent(0.5); // decrease the opacity level by 50%, halfway the current opacity value and fully transparent
 ```
 #### vivid(sl)
-_sl_ is a value from 0 to 1 where 0 is the current level and 1 is the same color, fully saturated without any darkness or lightness. By default, black, grey and white have a hue value of 0, which is equal to red when vividness is applied.
+_sl_ is a value from 0 to 1 where 0 is the current level and 1 is the same colour, fully saturated without any darkness or lightness. By default, black, grey and white have a hue value of 0, which is equal to red when vividness is applied.
 ```
 vivid(1); // fully expose the hue color relative to the current saturation and lightness values
 ```
@@ -265,7 +265,7 @@ vivid(1); // fully expose the hue color relative to the current saturation and l
 The smart methods do some magic tricks and make ```ddBasecolor``` a class apart.
 
 #### blend(color, smart=true)
-This method blends two colors into one. 
+This method blends two colours into one. 
 
 ### Return methods
 These methods return color information for use in html or stylesheets:
