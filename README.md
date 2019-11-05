@@ -276,7 +276,7 @@ var my_basecolor = new ddBasecolor('brown');
 var my_second_color = new ddBasecolor('brown');
 var my_blend_color = my_basecolor(my_second_color);
 ```
-See the ```blend()``` difference with and without _smart_ in Codepen.io
+See the ```blend()``` difference with and without _smart_ in [Codepen.io](https://codepen.io/design-dude/pen/qBBojWE)
 
 ### Return methods
 These methods return color information for use in html or stylesheets:
