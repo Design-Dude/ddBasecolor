@@ -22,7 +22,7 @@ var my_new_color = my_color.lighten(0.5);
 my_new_color = my_new_color.hex();
 ```
 ## Series
-To make a series of colours you will needa loop.
+To make a series of colours you will need a loop.
 ```
 var my_color = new ddBasecolor('red'); // step 1: create a colour 
 for(i=0 ; i<=1 ; i+=0.1) { // 10 steps, 11 colours
@@ -261,11 +261,22 @@ _sl_ is a value from 0 to 1 where 0 is the current level and 1 is the same colou
 vivid(1); // fully expose the hue color relative to the current saturation and lightness values
 ```
 
+
 ### Smart methods
 The smart methods do some magic tricks and make ```ddBasecolor``` a class apart.
 
 #### blend(color, smart=true)
-This method blends two colours into one. 
+This method blends two colours into one.
+
+_color_ must be ddBasecolor object.
+
+With _smart_ (default _true_) blends both colors for the eye instead of mathematically. Smart blend take most effect on darker and lighter areas.
+```
+var my_basecolor = new ddBasecolor('brown');
+var my_second_color = new ddBasecolor('brown');
+var my_blend_color = my_basecolor(my_second_color);
+```
+See the ```blend()``` difference with and without _smart_ in Codepen.io
 
 ### Return methods
 These methods return color information for use in html or stylesheets:
