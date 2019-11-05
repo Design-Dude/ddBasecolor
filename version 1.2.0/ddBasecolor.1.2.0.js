@@ -471,15 +471,16 @@ class ddBasecolor {
 	/*
 	// Calculate gradient by percentage
 	*/
-	gradient(color = new ddBasecolor(), p = 0.5) { // smart
+	gradient(color = new ddBasecolor(), p = 0.5, smart = true) { // smart
 		if(typeof(color) !== 'undefined' && color.__proto__.constructor.name === 'ddBasecolor') {
 			var dr = color.r - this.r;
 			var dg = color.g - this.g;
 			var db = color.b - this.b;
 			var da = color.a - this.a;
 			p = isNaN(p) ? 0.5 : p < 0 ? 0 : p > 1 ? 1 : p;
-			var lf = (Math.abs(color.l - this.l) / 100) * (Math.abs(color.s - this.s) / 360);
-			if(lf > 0.011) p = this._index(p,dr,dg,db);
+			var lf = (Math.abs(color.l - this.l) / 100) * (Math.abs(color.s - this.s) / 100);
+			console.log(lf);
+			if(smart && lf > 0.2) p = this._index(p,dr,dg,db);
 			this.r = Math.round(this.r + dr * p);
 			this.g = Math.round(this.g + dg * p);
 			this.b = Math.round(this.b + db * p);
