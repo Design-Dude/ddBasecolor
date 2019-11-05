@@ -262,15 +262,16 @@ vivid(1); // fully expose the hue color relative to the current saturation and l
 ```
 
 
+
 ### Smart methods
-The smart methods do some magic tricks and make ```ddBasecolor``` a class apart.
+The smart methods do some smart tricks and make ```ddBasecolor``` a class apart.
 
 #### blend(color, smart=true)
 This method blends two colours into one.
 
-_color_ must be ddBasecolor object.
+_color_ must be a ```ddBasecolor``` object.
 
-With _smart_ (default _true_) blends both colors for the eye instead of mathematically. Smart blend take most effect on darker and lighter areas.
+With _smart_ (default _true_) both colours are blended for the eye instead of mathematically. Smart blend take effect on darker and lighter areas.
 ```
 var my_basecolor = new ddBasecolor('brown');
 var my_second_color = new ddBasecolor('brown');
