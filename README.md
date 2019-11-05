@@ -261,10 +261,8 @@ _sl_ is a value from 0 to 1 where 0 is the current level and 1 is the same colou
 vivid(1); // fully expose the hue color relative to the current saturation and lightness values
 ```
 
-
-
 ### Smart methods
-The smart methods do some smart tricks and make ```ddBasecolor``` a class apart.
+The smart methods do some smart tricks and make ```ddBasecolor``` a class apart. The results of _smart_ operations are still mathematical corrections. Sometimes the not-so-smart calculationa turn out to work better. Its best practice to compare both results with and without _smart_ using the examples below to find out the best result for your project.
 
 #### blend(color, smart=true)
 This method blends two colours into one.
@@ -274,7 +272,7 @@ _color_ must be a ```ddBasecolor``` object.
 With _smart_ (default _true_) both colours are blended for the eye instead of mathematically. Smart blend takes effect on darker and lighter areas.
 ```
 var my_basecolor = new ddBasecolor('brown');
-var my_second_color = new ddBasecolor('brown');
+var my_second_color = new ddBasecolor('black');
 var my_blend_color = my_basecolor(my_second_color);
 ```
 See the ```blend()``` difference with and without _smart_ in [Codepen.io](https://codepen.io/design-dude/pen/qBBojWE)
