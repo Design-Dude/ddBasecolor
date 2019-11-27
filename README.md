@@ -269,13 +269,27 @@ This method blends two colours into one.
 
 _color_ must be a ```ddBasecolor``` object.
 
-With _smart_ (default _true_) both colours are blended for the eye instead of mathematically. Smart blend takes effect on darker and lighter areas.
+With _smart_ (default _true_) both colours are blended for the eye instead of mathematically. Smart blend takes most effect on darker and lighter areas.
 ```
 var my_basecolor = new ddBasecolor('brown');
 var my_second_color = new ddBasecolor('black');
-var my_blend_color = my_basecolor(my_second_color);
+var my_smart_blend_color = my_basecolor.blend(my_second_color);
+var my_normal_blend_color = my_basecolor.blend(my_second_color, false);
 ```
 See the ```blend()``` difference with and without _smart_ in [Codepen.io](https://codepen.io/design-dude/pen/qBBojWE)
+
+#### darken(p, smart=true)
+This method return a darkened colour variant of the base colour.
+
+_p_ is a darkness value between 0 (full colour) and 1 (black).
+
+With _smart_ (default _true_) the base colours is darkened for the eye instead of mathematically. Smart darkening takes most effect on darker and lighter areas.
+```
+var my_basecolor = new ddBasecolor('red');
+var my_smart_darkened_color = my_basecolor.darken(0.8);
+var my_normal_darkened_color = my_basecolor.darken(0.8, false);
+```
+See the ```darken()``` difference with and without _smart_ in [Codepen.io](https://codepen.io/design-dude/pen/zYYgKvX)
 
 ### Return methods
 These methods return color information for use in html or stylesheets:
