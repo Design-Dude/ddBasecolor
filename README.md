@@ -279,7 +279,7 @@ _r_ is the rotation type 'c'(1) clockwise, 'cc'(-1) counter clockwise, 's'(0) sh
 
 _color_ must be a ```ddBasecolor``` object. It is the target colour for the rainbow.
 
-_smart_
+With _smart_ (default _true_) the rainbow is calculated for the eye instead of mathematically. Smart rainbows takes most effect on darker and lighter areas.
 ```
 var my_basecolor = new ddBasecolor('red');
 var colors = 16;
@@ -288,7 +288,44 @@ for(i=1;i<=colors;i++) {
   var my_rainbow_col = my_base_color.rainbow(col_index, 'c');
 }
 ```
-See the ```raibow()``` with difference options in [Codepen.io](https://codepen.io/design-dude/pen/abbeBPV)
+See the ```rainbow()``` with difference options in [Codepen.io](https://codepen.io/design-dude/pen/abbeBPV)
+
+#### random(r=1, g=1, b=1, h=1, s=1, l=1, a=0)
+Calculate random color
+
+_r_ value between 0 and 1 with which red participates in the random result relative to the base colour
+
+_g_ value between 0 and 1 with which green participates in the random result relative to the base colour
+
+_b_ value between 0 and 1 with which blue participates in the random result relative to the base colour
+
+_s_ value between 0 and 1 with which saturation participates in the random result relative to the base colour
+
+_l_ value between 0 and 1 with which lightness participates in the random result relative to the base colour
+
+_a_ value between 0 and 1 with which transparency participates in the random result relative to the base colour
+
+```
+var my_basecolor = new ddBasecolor();
+var my_random_color = my_basecolor.random();
+```
+See...
+
+#### ratio(backgroundcolor, level, p)
+Calculate text contrast ratio colour according to WCAG 2.0.
+
+_backgroundcolor_ the colour the text will be placed on.
+
+_level_ WCAG ratio level 'aa', 'aaa', 'aa18', 'aaa18'. If _level_ is false the method return the difference in ration between text (base colour) and _backgroundcolor_.
+
+_p_ value between 0 (minimal contrast ration colour) and 1 (black or white).
+
+```
+var my_textcolor = new ddBasecolor('green');
+var my_background = new ddBasecolor('lime');
+my_textcolor = my_textcolor.ration(my_background, 'aa', 0);
+```
+See...
 
 #### invert()
 Returns inverted colour by rgb calculation.
