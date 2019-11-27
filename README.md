@@ -240,7 +240,7 @@ _a_ is an opacity value from 0 to 1 where 0 is the current opacity value and 1 i
 ```
 opaque(0.5); // increase the opacity level by 50%, halfway the current opacity value and fully opaque
 ```
-#### rotate(h)
+#### rotate(h=180)
 _h_ is the hue rotaion value in degrees where positive values rotate clockwise and negative values counter clockwise.
 ```
 rotate(-90); // rotate the current hue value 90 degrees counter clockwisde
@@ -263,6 +263,51 @@ vivid(1); // fully expose the hue color relative to the current saturation and l
 
 ### Smart methods
 The smart methods do some smart tricks and make ```ddBasecolor``` a class apart. The results of _smart_ operations are still mathematical corrections. Sometimes the not-so-smart calculationa turn out to work better. Its best practice to compare both results with and without _smart_ using the examples below to find out the best result for your project.
+
+#### complement()
+Returns complementary colour by rotation. Same as rotate()
+```
+complement(); // rotate the current hue value 180 degrees
+```
+
+#### rainbow(p=0.5, r=0, color=this.copy(), smart=true)
+Returns a rainbow colour variant between the base colour and _color_.
+
+_p_ is the index value between 0 and 1
+
+_r_ is the rotation type 'c'(1) clockwise, 'cc'(-1) counter clockwise, 's'(0) short path to _color_ or 'l'(2) long path to _color_
+
+_color_ must be a ```ddBasecolor``` object. It is the target colour for the rainbow.
+
+_smart_
+```
+var my_basecolor = new ddBasecolor('red');
+var colors = 16;
+for(i=1;i<=colors;i++) {
+  var col_index = my_base_color.index(colors, i, -0.5);
+  var my_rainbow_col = my_base_color.rainbow(col_index, 'c');
+}
+```
+See the ```raibow()``` with difference options in [Codepen.io](https://codepen.io/design-dude/pen/abbeBPV)
+
+#### invert()
+Returns inverted colour by rgb calculation.
+```
+invert();
+```
+
+#### monotone(color, p = 1)
+Returns a monotone variant of the base colour.
+
+_color_ must be a ```ddBasecolor``` object and will act as the base tone for the mono tone.
+
+_p_ is the blend value between 0 and 1 for _color_. With 0 for _p_ ```monotone``` returns a greyscale.
+
+```
+var my_basecolor = new ddBasecolor('red');
+var my_tone_color = new ddBasecolor('green');
+var my_mono_tone = my_basecolor.monotone(my_tone_color, 0.5);
+```
 
 #### blend(color, smart=true)
 This method blends two colours into one.
@@ -308,8 +353,72 @@ var my_normal_gradient_color = my_basecolor.blend(my_second_color, 0.5, false);
 ```
 See the ```gradient()``` difference with and without _smart_ in [Codepen.io](https://codepen.io/design-dude/pen/mddNrWW)
 
+#### grey(p)
 
-https://codepen.io/design-dude/pen/mddNrWW
+This method return a grey variant of the base colour.
+
+_p_ is the greyness value between 0 (base colour) and default 1 (grey scale colour).
+
+```
+var my_basecolor = new ddBasecolor('red');
+var my_grey_color = my_basecolor.grey(1);
+```
+See the ```grey()``` example in [Codepen.io](https://codepen.io/design-dude/pen/qBBeaKN)
+
+#### lighten(p, smart=true)
+This method return a lightened colour variant of the base colour.
+
+_p_ is a lightness value between 0 (full colour) and 1 (white).
+
+With _smart_ (default _true_) the base colours is lightened for the eye instead of mathematically. Smart lightening takes most effect on darker and lighter areas.
+```
+var my_basecolor = new ddBasecolor('red');
+var my_smart_lightened_color = my_basecolor.lighten(0.8);
+var my_normal_lightened_color = my_basecolor.lighten(0.8, false);
+```
+See the ```lighten()``` difference with and without _smart_ in [Codepen.io](https://codepen.io/design-dude/pen/ExxQgeR)
+
+
+### other methods
+Other methods to help you out.
+
+#### clone()
+Make a clone with current colour as new base colour.
+```
+var my_basecolor = new ddBasecolor('red');
+var my_new_lightened_basecolor = my_basecolor.lighten(0.5).clone();
+```
+
+#### copy()
+Make a copy that share the initial base colour.
+```
+var my_basecolor = new ddBasecolor('red');
+var my_new_lightened_basecolor = my_basecolor.lighten(0.5).copy();
+```
+
+#### index(count=2, index=1, shift=0)
+Calculate necessary value between 0 and 1 from a given number of colours and the index value. Use the result for further colour manipulations.
+
+_count_ is the number of colours in the series.
+
+_index_ is the current index value between 1 and _count_.
+
+_shift_ changes the result if _index_ becomes greater than _count_. For practical info see ```Advanced techniques```
+```
+var my_basecolor = new ddBasecolor('red');
+var colors = 16;
+for(i=1;i<=colors;i++) {
+  var col_index = my_base_color.index(colors, i);
+  var some_col = my_base_color.lighten(col_index);
+}
+```
+
+#### luminance()
+Returns the relative brightness according to WCAG 2.0
+```
+var my_basecolor = my_basecolor('red');
+my_basecolor.luminance();
+```
 
 ### Return methods
 These methods return color information for use in html or stylesheets:
