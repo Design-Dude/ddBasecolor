@@ -291,6 +291,26 @@ var my_normal_darkened_color = my_basecolor.darken(0.8, false);
 ```
 See the ```darken()``` difference with and without _smart_ in [Codepen.io](https://codepen.io/design-dude/pen/zYYgKvX)
 
+#### gradient(color, p, smart=true)
+
+This method return a gradient variant between two colours.
+
+_color_ must be a ```ddBasecolor``` object.
+
+_p_ is a gradient value between 0 (base colour) and 1 (color).
+
+With _smart_ (default _true_) the gradient is calculated for the eye instead of mathematically. Smart gradient takes most effect on darker and lighter areas.
+```
+var my_basecolor = new ddBasecolor('red');
+var my_second_color = new ddBasecolor('black');
+var my_smart_gradient_color = my_basecolor.blend(my_second_color, 0.5);
+var my_normal_gradient_color = my_basecolor.blend(my_second_color, 0.5, false);
+```
+See the ```gradient()``` difference with and without _smart_ in [Codepen.io](https://codepen.io/design-dude/pen/mddNrWW)
+
+
+https://codepen.io/design-dude/pen/mddNrWW
+
 ### Return methods
 These methods return color information for use in html or stylesheets:
 ```
