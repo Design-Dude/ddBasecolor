@@ -383,19 +383,19 @@ for(i=1;i<=colors;i++) {
 See the ```rainbow()``` with difference options in [Codepen.io](https://codepen.io/design-dude/pen/abbeBPV)
 
 #### random(r=1, g=1, b=1, h=1, s=1, l=1, a=0)
-Calculate random color
+Calculate random color .relative to the base colour. The lower the values, the closer the random colour will look like the base colour.
 
-_r_ value between 0 and 1 with which red participates in the random result relative to the base colour
+_r_ value between 0 and 1 with which red participates in the random result
 
-_g_ value between 0 and 1 with which green participates in the random result relative to the base colour
+_g_ value between 0 and 1 with which green participates in the random result
 
-_b_ value between 0 and 1 with which blue participates in the random result relative to the base colour
+_b_ value between 0 and 1 with which blue participates in the random result
 
-_s_ value between 0 and 1 with which saturation participates in the random result relative to the base colour
+_s_ value between 0 and 1 with which saturation participates in the random result
 
-_l_ value between 0 and 1 with which lightness participates in the random result relative to the base colour
+_l_ value between 0 and 1 with which lightness participates in the random result
 
-_a_ value between 0 and 1 with which transparency participates in the random result relative to the base colour
+_a_ value between 0 and 1 with which transparency participates in the random result
 
 ```
 var my_basecolor = new ddBasecolor();
