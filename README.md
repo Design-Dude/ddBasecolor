@@ -279,10 +279,12 @@ var my_normal_blend_color = my_basecolor.blend(my_second_color, false);
 See the ```blend()``` difference with and without _smart_ in [Codepen.io](https://codepen.io/design-dude/pen/qBBojWE)
 
 #### complement()
-Returns complementary colour by rotation. Same as rotate()
+Returns complementary colour by rotation. Same as rotate(). ```complement()``` does not invert lightness like ```invert()```
 ```
 complement(); // rotate the current hue value 180 degrees
 ```
+See the ```complement()``` and ```invert()``` difference in [Codepen.io](https://codepen.io/design-dude/pen/mddNzpG)
+
 
 #### darken(p, smart=true)
 This method return a darkened colour variant of the base colour.
@@ -327,10 +329,11 @@ var my_grey_color = my_basecolor.grey(1);
 See the ```grey()``` example in [Codepen.io](https://codepen.io/design-dude/pen/qBBeaKN)
 
 #### invert()
-Returns inverted colour by rgb calculation.
+Returns inverted colour by rgb calculation. ```invert()``` also inverts lightness unlike ```complement()```
 ```
 invert();
 ```
+See the ```complement()``` and ```invert()``` difference in [Codepen.io](https://codepen.io/design-dude/pen/mddNzpG)
 
 #### lighten(p, smart=true)
 This method return a lightened colour variant of the base colour.
