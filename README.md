@@ -127,36 +127,36 @@ These methods get or set the various properties of the colour involved. All prop
 #### alpha(a)
 _a_ is an opacity value between 0 and 1 where 1 is fully opaque.
 ```
-alpha(); // get alpha level
-alpha(0.5); // set alpha level to half transparent
+my_basecolor.alpha(); // get alpha level
+my_basecolor.alpha(0.5); // set alpha level to half transparent
 ```
 
-#### cmyk(c,m,y,k,a=1)
+#### cmyk(c,m=0,y=0,k=0,a=1)
 Set the colour to _c,m,y_ and _k_ values between 0 and 100.
 
 _a_ is an opacity value between 0 and 1 where 1 is default and fully opaque.
 ```
-cmyk(); // get cmyk object {c:0,m:100,y:100,k:0} if cmyk is enabled
-cmyk(0,100,100,0,0.5); // set color to red from cmyk values, half transparent.
+my_basecolor.cmyk(); // get cmyk object {c:0,m:100,y:100,k:0} if cmyk is enabled
+my_basecolor.cmyk(0,100,100,0,0.5); // set color to red from cmyk values, half transparent.
 ```
 
 #### hex(h)
 _h_ is a hexadecimal string, with or without transparency information.
 ```
-hex(); // get color as a hexadecimal string '#ff0000'
-hex('#ff0000'); // set color from hexadecimal string (alpha channel will be 1)
-hex('#ff000080'); // set color with alpha channel from hexadecimal string
+my_basecolor.hex(); // get color as a hexadecimal string '#ff0000'
+my_basecolor.hex('#ff0000'); // set color from hexadecimal string (alpha channel will be 1)
+my_basecolor.hex('#ff000080'); // set color with alpha channel from hexadecimal string
 ```
 
 #### hexa(h)
 _h_ is a hexadecimal string, with or without transparency information.
 ```
-hexa(); // get hexadecimal string with alpha channel '#ff000080'
-hexa('#ff0000'); // set color from hexadecimal string (alpha channel will be 1)
-hexa('#ff000080'); // set color with alpha channel from hexadecimal string
+my_basecolor.hexa(); // get hexadecimal string with alpha channel '#ff000080'
+my_basecolor.hexa('#ff0000'); // set color from hexadecimal string (alpha channel will be 1)
+my_basecolor.hexa('#ff000080'); // set color with alpha channel from hexadecimal string
 ```
 
-#### hsl(h,s,l,a=1)
+#### hsl(h,s=100,l=50,a=1)
 _h_ is the hue value between 0 and 360 degrees.
 
 _s_ is the saturation value between 0 (grey) and 100 (fully saturated).
@@ -165,12 +165,12 @@ _l_ is the lightness value between 0 (black) and 100 (white) where 50 is full co
 
 _a_ is an opacity value between 0 and 1 where 1 is default and fully opaque.
 ```
-hsl(); // get hsl string 'hsl(0,100%,50%)'
-hsl('obj'); // get hsl object with alpha channel {h:0,s:100,l:50,a=1}
-hsl(0,100,50,0.5); // set hsl values and optional opacity to half transparent
+my_basecolor.hsl(); // get hsl string 'hsl(0,100%,50%)'
+my_basecolor.hsl('obj'); // get hsl object with alpha channel {h:0,s:100,l:50,a=1}
+my_basecolor.hsl(0,100,50,0.5); // set hsl values and optional opacity to half transparent
 ```
 
-#### hsla(h,s,l,a=1)
+#### hsla(h,s=100,l=50,a=1)
 _h_ is the hue value between 0 and 360 degrees.
 
 _s_ is the saturation value between 0 (grey) and 100 (fully saturated).
@@ -179,172 +179,88 @@ _l_ is the lightness value between 0 (black) and 100 (white) where 50 is full co
 
 _a_ is an opacity value between 0 and 1 where 1 is default and fully opaque.
 ```
-hsla(); // get hsla string 'hsl(0,100%,50%,0.5)'
-hsla('obj'); // get hsl object with alpha channel {h:0,s:100,l:50,a=1}
-hsla(0,100,50,0.5); // set hsl values and optional opacity to half transparent
+my_basecolor.hsla(); // get hsla string 'hsl(0,100%,50%,0.5)'
+my_basecolor.hsla('obj'); // get hsl object with alpha channel {h:0,s:100,l:50,a=1}
+my_basecolor.hsla(0,100,50,0.5); // set hsl values and optional opacity to half transparent
 ```
 
 #### hue(h)
 _h_ is the hue value in degrees between 0 and 360.
 ```
-hue(); // get hue value
-hue(240); // set hue value to 120, which is blue.
+my_basecolor.hue(); // get hue value
+my_basecolor.hue(240); // set hue value to 120, which is blue.
 ```
 
 #### lightness(l)
 _l_ is the lightness value between 0 (black) and 100 (white) where 50 is full colour.
 ```
-lightness(); // get lightness value
-lightness(l); // set lightness value to 1, which is white.
+my_basecolor.lightness(); // get lightness value
+my_basecolor.lightness(l); // set lightness value to 1, which is white.
 ```
 
-#### rgb(r,g,b,a=1)
+#### rgb(r,g=0,b=0,a=1)
 _r, g, b_ values are between 0 and 255
 
 _a_ is an opacity value between 0 and 1 where 1 is default and fully opaque.
 ```
-rgb(); // get rgb string 'rgb(255,0,0)'
-rgb('obj'); // get rgb object with alpha channel {r:255,g:0,b:0,a=1}
-rgb(255,0,0); // set color to red, fully opaque (default 1)
+my_basecolor.rgb(); // get rgb string 'rgb(255,0,0)'
+my_basecolor.rgb('obj'); // get rgb object with alpha channel {r:255,g:0,b:0,a=1}
+my_basecolor.rgb(255,0,0); // set color to red, fully opaque (default 1)
 ```
 
-#### rgba(r,g,b,a=1)
+#### rgba(r,g=0,b=0,a=1)
 _r, g, b_ values are between 0 and 255
 
 _a_ is an opacity value between 0 and 1 where 1 is default and fully opaque.
 ```
-rgba(); // get rgb string 'rgb(255,0,0,0.5)'
-rgba('obj'); // get rgb object with alpha channel {r:255,g:0,b:0,a=0.5}
-rgba(255,0,0,0.5); // set rgb values to red, half transparent
+my_basecolor.rgba(); // get rgb string 'rgb(255,0,0,0.5)'
+my_basecolor.rgba('obj'); // get rgb object with alpha channel {r:255,g:0,b:0,a=0.5}
+my_basecolor.rgba(255,0,0,0.5); // set rgb values to red, half transparent
 ```
 
 #### saturation(s)
 _s_ is the saturation value between 0 (grey) and 100 (fully saturated).
 ```
-saturation(); // get saturation value
-saturation(100); // set saturation value to fully saturated
+my_basecolor.saturation(); // get saturation value
+my_basecolor.saturation(100); // set saturation value to fully saturated
 ```
 
 ### Relative setter methods
 These setter methods make it easier to alter specific properties in a single direction relative to the current colour settings.
 
-[EXAMPLE]
-
-#### desaturate(s)
+#### desaturate(s=1)
 _s_ is a desaturation value from 0 to 1, where 0 is the current saturation value and 1 is fully desaturated.
 ```
-desaturate(1); // decrease the saturation level to fully desaturated
+my_basecolor.desaturate(1); // decrease the saturation level to fully desaturated
 ```
-#### opaque(a)
-_a_ is an opacity value from 0 to 1 where 0 is the current opacity value and 1 is fully opaque.
+#### opaque(o=1)
+_o_ is an opacity value from 0 to 1 where 0 is the current opacity value and 1 is fully opaque.
 ```
-opaque(0.5); // increase the opacity level by 50%, halfway the current opacity value and fully opaque
+my_basecolor.opaque(0.5); // increase the opacity level by 50%, halfway the current opacity value and fully opaque
 ```
 #### rotate(h=180)
 _h_ is the hue rotaion value in degrees where positive values rotate clockwise and negative values counter clockwise.
 ```
-rotate(-90); // rotate the current hue value 90 degrees counter clockwisde
+my_basecolor.rotate(-90); // rotate the current hue value 90 degrees counter clockwisde
 ```
-#### saturate(s)
+#### saturate(s=1)
 _s_ is a saturation value from 0 to 1, where 0 is the current saturation value and 1 is fully saturated.
 ```
-saturate(0.5); // increase the saturation level by 50%, halfway the current saturation value and fully saturated
+my_basecolor.saturate(0.5); // increase the saturation level by 50%, halfway the current saturation value and fully saturated
 ```
-#### transparent(a)
-_a_ is an opacity value from 0 to 1 where 0 is the current opacity value and 1 is fully transparent.
+#### transparent(o=1)
+_o_ is an opacity value from 0 to 1 where 0 is the current opacity value and 1 is fully transparent.
 ```
-transparent(0.5); // decrease the opacity level by 50%, halfway the current opacity value and fully transparent
+my_basecolor.transparent(0.5); // decrease the opacity level by 50%, halfway the current opacity value and fully transparent
 ```
-#### vivid(sl)
-_sl_ is a value from 0 to 1 where 0 is the current level and 1 is the same colour, fully saturated without any darkness or lightness. By default, black, grey and white have a hue value of 0, which is equal to red when vividness is applied.
+#### vivid(v=1)
+_v_ is a value from 0 to 1 where 0 is the current vivid level and 1 is the same colour, fully saturated without any darkness or lightness. By default, black, grey and white have a hue value of 0, which is equal to red when vividness is applied.
 ```
-vivid(1); // fully expose the hue color relative to the current saturation and lightness values
+my_basecolor.vivid(1); // fully expose the hue color relative to the current saturation and lightness values
 ```
 
 ### Smart methods
 The smart methods do some smart tricks and make ```ddBasecolor``` a class apart. The results of _smart_ operations are still mathematical corrections. Sometimes the not-so-smart calculationa turn out to work better. Its best practice to compare both results with and without _smart_ using the examples below to find out the best result for your project.
-
-#### complement()
-Returns complementary colour by rotation. Same as rotate()
-```
-complement(); // rotate the current hue value 180 degrees
-```
-
-#### rainbow(p=0.5, r=0, color=this.copy(), smart=true)
-Returns a rainbow colour variant between the base colour and _color_.
-
-_p_ is the index value between 0 and 1
-
-_r_ is the rotation type 'c'(1) clockwise, 'cc'(-1) counter clockwise, 's'(0) short path to _color_ or 'l'(2) long path to _color_
-
-_color_ must be a ```ddBasecolor``` object. It is the target colour for the rainbow.
-
-With _smart_ (default _true_) the rainbow is calculated for the eye instead of mathematically. Smart rainbows takes most effect on darker and lighter areas.
-```
-var my_basecolor = new ddBasecolor('red');
-var colors = 16;
-for(i=1;i<=colors;i++) {
-  var col_index = my_base_color.index(colors, i, -0.5);
-  var my_rainbow_col = my_base_color.rainbow(col_index, 'c');
-}
-```
-See the ```rainbow()``` with difference options in [Codepen.io](https://codepen.io/design-dude/pen/abbeBPV)
-
-#### random(r=1, g=1, b=1, h=1, s=1, l=1, a=0)
-Calculate random color
-
-_r_ value between 0 and 1 with which red participates in the random result relative to the base colour
-
-_g_ value between 0 and 1 with which green participates in the random result relative to the base colour
-
-_b_ value between 0 and 1 with which blue participates in the random result relative to the base colour
-
-_s_ value between 0 and 1 with which saturation participates in the random result relative to the base colour
-
-_l_ value between 0 and 1 with which lightness participates in the random result relative to the base colour
-
-_a_ value between 0 and 1 with which transparency participates in the random result relative to the base colour
-
-```
-var my_basecolor = new ddBasecolor();
-var my_random_color = my_basecolor.random();
-```
-See...
-
-#### ratio(backgroundcolor, level, p)
-Calculate text contrast ratio colour according to WCAG 2.0.
-
-_backgroundcolor_ the colour the text will be placed on.
-
-_level_ WCAG ratio level 'aa', 'aaa', 'aa18', 'aaa18'. If _level_ is false the method return the difference in ration between text (base colour) and _backgroundcolor_.
-
-_p_ value between 0 (minimal contrast ration colour) and 1 (black or white).
-
-```
-var my_textcolor = new ddBasecolor('green');
-var my_background = new ddBasecolor('lime');
-my_textcolor = my_textcolor.ration(my_background, 'aa', 0);
-```
-See...
-
-#### invert()
-Returns inverted colour by rgb calculation.
-```
-invert();
-```
-
-#### monotone(color, p = 1)
-Returns a monotone variant of the base colour.
-
-_color_ must be a ```ddBasecolor``` object and will act as the base tone for the mono tone.
-
-_p_ is the blend value between 0 and 1 for _color_. With 0 for _p_ ```monotone``` returns a greyscale.
-
-```
-var my_basecolor = new ddBasecolor('red');
-var my_tone_color = new ddBasecolor('green');
-var my_mono_tone = my_basecolor.monotone(my_tone_color, 0.5);
-```
 
 #### blend(color, smart=true)
 This method blends two colours into one.
@@ -359,6 +275,12 @@ var my_smart_blend_color = my_basecolor.blend(my_second_color);
 var my_normal_blend_color = my_basecolor.blend(my_second_color, false);
 ```
 See the ```blend()``` difference with and without _smart_ in [Codepen.io](https://codepen.io/design-dude/pen/qBBojWE)
+
+#### complement()
+Returns complementary colour by rotation. Same as rotate()
+```
+complement(); // rotate the current hue value 180 degrees
+```
 
 #### darken(p, smart=true)
 This method return a darkened colour variant of the base colour.
@@ -402,6 +324,12 @@ var my_grey_color = my_basecolor.grey(1);
 ```
 See the ```grey()``` example in [Codepen.io](https://codepen.io/design-dude/pen/qBBeaKN)
 
+#### invert()
+Returns inverted colour by rgb calculation.
+```
+invert();
+```
+
 #### lighten(p, smart=true)
 This method return a lightened colour variant of the base colour.
 
@@ -415,6 +343,77 @@ var my_normal_lightened_color = my_basecolor.lighten(0.8, false);
 ```
 See the ```lighten()``` difference with and without _smart_ in [Codepen.io](https://codepen.io/design-dude/pen/ExxQgeR)
 
+#### monotone(color, p = 1)
+Returns a monotone variant of the base colour.
+
+_color_ must be a ```ddBasecolor``` object and will act as the base tone for the mono tone.
+
+_p_ is the blend value between 0 and 1 for _color_. With 0 for _p_ ```monotone``` returns a greyscale.
+
+```
+var my_basecolor = new ddBasecolor('red');
+var my_tone_color = new ddBasecolor('green');
+var my_mono_tone = my_basecolor.monotone(my_tone_color, 0.5);
+```
+See the ```monotone()``` in [Codepen.io](https://codepen.io/design-dude/pen/RwwXeoM)
+
+#### rainbow(p=0.5, r=0, color=this.copy(), smart=true)
+Returns a rainbow colour variant between the base colour and _color_.
+
+_p_ is the index value between 0 and 1
+
+_r_ is the rotation type 'c'(1) clockwise, 'cc'(-1) counter clockwise, 's'(0) short path to _color_ or 'l'(2) long path to _color_
+
+_color_ must be a ```ddBasecolor``` object. It is the target colour for the rainbow.
+
+With _smart_ (default _true_) the rainbow is calculated for the eye instead of mathematically. Smart rainbows takes most effect on darker and lighter areas.
+```
+var my_basecolor = new ddBasecolor('red');
+var colors = 16;
+for(i=1;i<=colors;i++) {
+  var col_index = my_base_color.index(colors, i, -0.5);
+  var my_rainbow_col = my_base_color.rainbow(col_index, 'c');
+}
+```
+See the ```rainbow()``` with difference options in [Codepen.io](https://codepen.io/design-dude/pen/abbeBPV)
+
+#### random(r=1, g=1, b=1, h=1, s=1, l=1, a=0)
+Calculate random color
+
+_r_ value between 0 and 1 with which red participates in the random result relative to the base colour
+
+_g_ value between 0 and 1 with which green participates in the random result relative to the base colour
+
+_b_ value between 0 and 1 with which blue participates in the random result relative to the base colour
+
+_s_ value between 0 and 1 with which saturation participates in the random result relative to the base colour
+
+_l_ value between 0 and 1 with which lightness participates in the random result relative to the base colour
+
+_a_ value between 0 and 1 with which transparency participates in the random result relative to the base colour
+
+```
+var my_basecolor = new ddBasecolor();
+var my_random_color = my_basecolor.random();
+```
+See the ```random()``` in [Codepen.io](https://codepen.io/design-dude/pen/ZEEgamo)
+
+#### ratio(backgroundcolor, level, p)
+Calculate text contrast ratio colour according to WCAG 2.0.
+
+_backgroundcolor_ the colour the text will be placed on.
+
+_level_ WCAG ratio level 'aa', 'aaa', 'aa18', 'aaa18'. If _level_ is false the method return the difference in ration between text (base colour) and _backgroundcolor_.
+
+_p_ value between 0 (minimal contrast ration colour) and 1 (black or white).
+
+```
+var my_textcolor = new ddBasecolor('green');
+var my_background = new ddBasecolor('lime');
+my_textcolor = my_textcolor.ration(my_background, 'aa', 0);
+```
+See the ```ratio()``` in [Codepen.io](https://codepen.io/design-dude/pen/vYYodxR)
+
 
 ### other methods
 Other methods to help you out.
@@ -422,12 +421,19 @@ Other methods to help you out.
 #### clone()
 Make a clone with current colour as new base colour.
 ```
-var my_basecolor = new ddBasecolor('red');
-var my_new_lightened_basecolor = my_basecolor.lighten(0.5).clone();
+var my_base_color = new ddBasecolor('red');
+var colors = 16;
+for(i=1;i<=colors;i++) {
+  var col_index = my_base_color.index(colors, i);
+  var my_rainbowcolor = my_basecolor.rainbow(col_index, 'c').clone(); // calc rainbow color and clone it
+  var my_first_mono_col = default_col.monotone(my_tone_color, 0.25); // use the clone
+  var my_second_mono_col = default_col.monotone(my_tone_color); // and again
+}
 ```
+Test the cloning in [Codepen.io](https://codepen.io/design-dude/pen/vYYodxR)
 
 #### copy()
-Make a copy that share the initial base colour.
+Make a copy that share the initial base colour. A bit useless.
 ```
 var my_basecolor = new ddBasecolor('red');
 var my_new_lightened_basecolor = my_basecolor.lighten(0.5).copy();
@@ -457,6 +463,7 @@ var my_basecolor = my_basecolor('red');
 my_basecolor.luminance();
 ```
 
+
 ### Return methods
 These methods return color information for use in html or stylesheets:
 ```
@@ -485,3 +492,7 @@ console.log(my_basecolor.cmyk()); // {c:0,m:100,y:100,k:0}
 ```
 
 ## Advanced techniques
+stack...
+index+rainbow...
+grey+lighten...
+clone...
