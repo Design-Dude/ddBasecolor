@@ -258,6 +258,8 @@ _v_ is a value from 0 to 1 where 0 is the current vivid level and 1 is the same 
 ```
 my_basecolor.vivid(1); // fully expose the hue color relative to the current saturation and lightness values
 ```
+See the ```vivid()``` in [Codepen.io](https://codepen.io/design-dude/pen/WNNVMPb)
+
 
 ### Smart methods
 The smart methods do some smart tricks and make ```ddBasecolor``` a class apart. The results of _smart_ operations are still mathematical corrections. Sometimes the not-so-smart calculationa turn out to work better. Its best practice to compare both results with and without _smart_ using the examples below to find out the best result for your project.
