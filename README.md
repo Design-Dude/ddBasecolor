@@ -426,7 +426,7 @@ my_textcolor = my_textcolor.ration(my_background, 'aa', 0);
 See the ```ratio()``` in [Codepen.io](https://codepen.io/design-dude/pen/vYYodxR)
 
 
-### other methods
+### Convenient methods
 Other methods to help you out.
 
 #### clone()
@@ -450,12 +450,14 @@ var my_basecolor = new ddBasecolor('red');
 var my_new_lightened_basecolor = my_basecolor.lighten(0.5).copy();
 ```
 
-#### index(count=2, index=1, shift=0)
-Calculate necessary value between 0 and 1 from a given number of colours and the index value. Use the result for further colour manipulations.
+#### index(count=2, index=1, include=true, shift=0)
+Calculate necessary value between 0 and 1 from a given number of colours plus index value for further use.
 
 _count_ is the number of colours in the series.
 
 _index_ is the current index value between 1 and _count_.
+
+_include_ changes the result if _index_ becomes greater than _count_.
 
 _shift_ changes the result if _index_ becomes greater than _count_.
 ```
@@ -466,6 +468,27 @@ for(i=1;i<=colors;i++) {
   var some_col = my_base_color.lighten(col_index);
 }
 ```
+By default ```index()``` returns 1 if _index_ equals _count_. Sometimes this is unwanted, for example in a rainbow coloured pie where the last target colour is the same as the base colour. The last target colour can be excluded from the serie with _include_ set to _false_.
+```
+var my_basecolor = new ddBasecolor('red');
+var colors = 16;
+for(i=1;i<=colors;i++) {
+  var col_index = my_base_color.index(colors, i, false);
+  var some_rainbow_col = my_base_color.rainbow(col_index, 'c', my_basecolor, false);
+}
+```
+if your code allows the _index_ to become larger than the available amount of colors (_count_) the colour series will repeat in rainbows and gradients. ```index``` has a _shift_ attribute with which the overflow series can be altered. You may leave out the _include_ parameter if it's _true_.
+```
+var my_basecolor = new ddBasecolor('red');
+var colors = 16;
+for(i=1;i<=colors;i++) {
+  var col_index = my_base_color.index(colors, i, false);
+  var some_rainbow_col = my_base_color.rainbow(col_index, 'c', my_basecolor, true, 0.25); // shift the index 0.25 onwards
+  var some_rainbow_col = my_base_color.rainbow(col_index, 'c', my_basecolor, 0.25); // include will still be true
+  var some_rainbow_col = my_base_color.rainbow(col_index, 'c', my_basecolor, false, 0.25); // exclude last target colour
+}
+```
+Index examples at [Codepen.io](https://codepen.io/design-dude/pen/QWWezMr)
 
 #### luminance()
 Returns the relative brightness according to WCAG 2.0
