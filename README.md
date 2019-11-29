@@ -430,21 +430,14 @@ See the ```ratio()``` in [Codepen.io](https://codepen.io/design-dude/pen/vYYodxR
 Other methods to help you out.
 
 #### clone()
-Make a clone with current colour as new base colour.
+Make a clone with current colour as new base colour. Kinda unnecessary. Added for internal use.
 ```
-var my_base_color = new ddBasecolor('red');
-var colors = 16;
-for(i=1;i<=colors;i++) {
-  var col_index = my_base_color.index(colors, i);
-  var my_rainbowcolor = my_basecolor.rainbow(col_index, 'c').clone(); // calc rainbow color and clone it
-  var my_first_mono_col = default_col.monotone(my_tone_color, 0.25); // use the clone
-  var my_second_mono_col = default_col.monotone(my_tone_color); // and again
-}
+var my_basecolor = new ddBasecolor('red');
+var my_new_lightened_basecolor = my_basecolor.lighten(0.5).clone();
 ```
-Test the cloning in [Codepen.io](https://codepen.io/design-dude/pen/vYYodxR)
 
 #### copy()
-Make a copy that share the initial base colour. A bit useless.
+Make a copy that shares the initial base colour. A bit useless. Added for internal use.
 ```
 var my_basecolor = new ddBasecolor('red');
 var my_new_lightened_basecolor = my_basecolor.lighten(0.5).copy();
