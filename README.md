@@ -457,9 +457,9 @@ _count_ is the number of colours in the series.
 
 _index_ is the current index value between 1 and _count_.
 
-_include_ changes the result if _index_ becomes greater than _count_.
+_include_ excludes last target colour form the series if set to _false_.
 
-_shift_ changes the result if _index_ becomes greater than _count_.
+_shift_ shifts _index_ by _shift_ while _index_ > _count_.
 ```
 var my_basecolor = new ddBasecolor('red');
 var colors = 16;
