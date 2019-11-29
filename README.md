@@ -517,3 +517,5 @@ my_basecolor.rgb('obj'); // {r:255,g:0,b:0,a:1}
 my_basecolor.hsl('object'); // {h:0,s:100,l:50,a:1}
 console.log(my_basecolor.cmyk()); // {c:0,m:100,y:100,k:0}
 ```
+
+###Good luck to you!
