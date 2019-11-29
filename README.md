@@ -5,17 +5,19 @@ Small and simple javascript library for manipulating colour objects. With method
 No doubt, there are many great colour libraries. Unfortunately not any of them met my needs. I had to fill a chart with a rainbow coloured pattern but many colours looked alike doing so pure mathematically. I wanted individually distinguishable colours. That's what ddBasecolor tries to provide. If the human eye is more important than the math behind you should give ddBasecolor a try. Also, where smart methods are involved it's optional.
 	
 ## Concept
-Compared to other libraries the concept is a little different also. Once a ```ddBasecolor``` is created its base colour will never change again. Instead, each operation will return a copy with updated values. Multiple operations can be stacked together though, as you can see in the section _Advanced techniques_. The big advantage is that all operations are predictable because they are always calculated from the same base colour.
+Compared to other libraries the concept is a little different also. Once a ```ddBasecolor``` is created its base colour will never change again. Instead, each operation will return a copy with updated values. Multiple operations can be stacked together though. The big advantage is that all operations are predictable because they are always calculated from the same base colour.
 
 ## Basic usage
 The basic use consists of 3 simple steps:
-1. Create a ```ddBasecolor``` using the constructor. See _Consturctor_ and _setter methods_ below. As mentioned above, it's important to notice that the base colour you create will never change because the colour updates and loops from the next step depend on this base colour. If you need to change the base colour, use ```clone()``` or create a new ```ddBasecolor```.
+1. Create a ```ddBasecolor``` using the constructor. See _Consturctor_ and _setter methods_ below. As mentioned above, it's important to notice that the base colour you create will never change because the colour updates and loops from the next step depend on this base colour. If you need to change the base colour, use ```clone()```, create a new ```ddBasecolor``` or reuse the base colour variable as the result of the operation.
 ```
 var my_color = new ddBasecolor('red');
+var my_color = my_color.hue(240); // update the basecolor to blue
 ```
-2. Next, update your colour variable using various _setter-_ and _smart methods_. Create series of colours with simple for-loops. See the _examples_ below and _Advanced techniques_ at the bottom. Many operations need the base colour for their calculations which is why the base colour never changes (just to say it again). Both the initial and the returned colour object will share the unaltered base colour which makes it possible to stack operations.
+2. Next, update your colour variable using various _setter-_ and _smart methods_. Create series of colours with simple for-loops. See the _Codepen.io examples_ below. Many operations need the base colour for their calculations which is why the base colour never changes (just to say it again). You can stack multiple operations and the returned colour object will always be a clone with it's own new base colour.
 ```
 var my_new_color = my_color.lighten(0.5);
+var my_new_color = my_color.hue(240).lighten(0.5); // stacking
 ```
 3. Finally use _getter methods_ and obtain the colour data in a format for further use in your css, script or html.
 ```
@@ -316,15 +318,19 @@ var my_normal_gradient_color = my_basecolor.blend(my_second_color, 0.5, false);
 ```
 See the ```gradient()``` difference with and without _smart_ in [Codepen.io](https://codepen.io/design-dude/pen/mddNrWW)
 
-#### grey(p)
+#### grey(p=1, l=0)
 
-This method return a grey variant of the base colour.
+This method return a grey variant of the base colour. Additionally you can lighten the greyscale with a second parameter.
 
 _p_ is the greyness value between 0 (base colour) and default 1 (grey scale colour).
 
+_l_ is the lighness value between 0 (greyscale colour) and 1 (white).
+
 ```
 var my_basecolor = new ddBasecolor('red');
-var my_grey_color = my_basecolor.grey(1);
+var my_grey_color = my_basecolor.grey(); // grey
+var my_grey_color = my_basecolor.grey(0.5); // half grey
+var my_grey_color = my_basecolor.grey(1, 0.5); // grey and 50% lightened
 ```
 See the ```grey()``` example in [Codepen.io](https://codepen.io/design-dude/pen/qBBeaKN)
 
@@ -451,7 +457,7 @@ _count_ is the number of colours in the series.
 
 _index_ is the current index value between 1 and _count_.
 
-_shift_ changes the result if _index_ becomes greater than _count_. For practical info see ```Advanced techniques```
+_shift_ changes the result if _index_ becomes greater than _count_.
 ```
 var my_basecolor = new ddBasecolor('red');
 var colors = 16;
@@ -464,7 +470,7 @@ for(i=1;i<=colors;i++) {
 #### luminance()
 Returns the relative brightness according to WCAG 2.0
 ```
-var my_basecolor = my_basecolor('red');
+var my_basecolor = new ddBasecolor('red');
 my_basecolor.luminance();
 ```
 
@@ -472,7 +478,7 @@ my_basecolor.luminance();
 ### Return methods
 These methods return color information for use in html or stylesheets:
 ```
-var my_basecolor = my_basecolor('red');
+var my_basecolor = new ddBasecolor('red');
 my_basecolor.hex(); // #FF0000;
 my_basecolor.hexa(); // #FF0000FF;
 my_basecolor.rgb(); // rgb(255,0,0);
@@ -482,7 +488,7 @@ my_basecolor.hsla(); // hsl(0,100%,50%,1);
 ```
 If you need the color information in number format you can read out each property individually.
 ```
-var my_basecolor = my_basecolor('red');
+var my_basecolor = new ddBasecolor('red');
 my_basecolor.alpha(); // alpha
 my_basecolor.hue(); // hue
 my_basecolor.saturation(); // saturation
@@ -490,14 +496,8 @@ my_basecolor.lightness(); // lightness
 ```
 Rgb, hsl and cmyk data may also be retured as data objects. The keyword _obj_ is compulsory for rgb and hsl. Both rgb and hsl include the alpha channel.
 ```
-var my_basecolor = my_basecolor('red');
+var my_basecolor = new ddBasecolor('red');
 my_basecolor.rgb('obj'); // {r:255,g:0,b:0,a:1}
 my_basecolor.hsl('object'); // {h:0,s:100,l:50,a:1}
 console.log(my_basecolor.cmyk()); // {c:0,m:100,y:100,k:0}
 ```
-
-## Advanced techniques
-stack...
-index+rainbow...
-grey+lighten...
-clone...
