@@ -519,3 +519,4 @@ console.log(my_basecolor.cmyk()); // {c:0,m:100,y:100,k:0}
 ```
 
 ###Good luck to you!
+
